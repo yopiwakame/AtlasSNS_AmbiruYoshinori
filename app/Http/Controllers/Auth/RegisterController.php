@@ -41,23 +41,32 @@ class RegisterController extends Controller
 
     public function register(Request $request){
         if($request->isMethod('post')){
-
+            // ユーザー入力を取得
             $username = $request->input('username');
             $mail = $request->input('mail');
             $password = $request->input('password');
-
+             // 新しいユーザーをデータベースに作成
             User::create([
                 'username' => $username,
                 'mail' => $mail,
                 'password' => bcrypt($password),
             ]);
 
-            return redirect('added');
+            // ユーザー名をセッションに保存してリダイレクト
+            return redirect()->route('added')->with('username', $username);
         }
         return view('auth.register');
     }
 
     public function added(){
-        return view('auth.added');
-    }
+   // セッションからusernameを取得してビューに渡す
+   $username = session('username');
+
+   // セッションが空の場合、registerページにリダイレクトすることもできます
+   if (!$username) {
+       return redirect()->route('register');
+   }
+
+   return view('auth.added', compact('username'));
+   }
 }
