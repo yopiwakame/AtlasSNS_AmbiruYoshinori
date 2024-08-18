@@ -59,14 +59,14 @@ class RegisterController extends Controller
     }
 
     public function added(){
-   // セッションからusernameを取得してビューに渡す
-   $username = session('username');
+       // セッションからusernameを取得してビューに渡す
+       $username = session('username');
 
-   // セッションが空の場合、registerページにリダイレクトすることもできます
-   if (!$username) {
-       return redirect()->route('register');
-   }
+         // セッションが空の場合、registerページにリダイレクト
+    //  if (!$username) {
+    //      return redirect()->route('register');
+    //     }
 
-   return view('auth.added', compact('username'));
-   }
+       return view('auth.added', compact('username'));
+    }
 }
