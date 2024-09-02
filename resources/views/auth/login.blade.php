@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- 適切なURLを入力してください -->
-{!! Form::open(['url' => '/login','method' => 'post']) !!}
+{!! Form::open(['url' => '/login', 'method' => 'post']) !!}
 
 <p>AtlasSNSへようこそ</p>
 

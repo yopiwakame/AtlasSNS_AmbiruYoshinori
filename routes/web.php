@@ -14,13 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
 Auth::routes();
 
 
 //ログアウト中のページ
-Route::get('/login', 'Auth\LoginController@login');
+Route::post('/logout', 'Auth\LoginController@logout');
+
+
+Route::get('/login', 'Auth\LoginController@login')->name('home');
 Route::post('/login', 'Auth\LoginController@login');
 
 
@@ -42,3 +45,22 @@ Route::get('/search','UsersController@index');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
+
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', function () {
+        return view('home');
+    });
+
+    Route::get('/profile', function () {
+        return view('profile');
+    });
+    Route::get('/search', function () {
+        return view('search');
+    });
+    Route::get('/follow-list', function () {
+        return view('follow-list');
+    });
+
+});

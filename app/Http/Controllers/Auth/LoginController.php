@@ -47,7 +47,10 @@ class LoginController extends Controller
             // ログインが成功したら、トップページへ
             //↓ログイン条件は公開時には消すこと
             if(Auth::attempt($data)){
-                return redirect('/top');
+               // ログイン成功後、ユーザー名をセッションに保存
+                $user = Auth::user();
+                $username = $user->username; // ユーザー名の取得
+                return view('home')->with('username', $username);
             } else {
                 // 認証に失敗した場合、エラーメッセージを表示
                 return back()->withErrors([
@@ -56,5 +59,22 @@ class LoginController extends Controller
             }
         }
         return view("auth.login");
+
+
+    }
+
+   public function logout(Request $request)
+    {
+        // ユーザーをログアウトさせる
+        Auth::logout();
+
+        // セッションを無効化
+        $request->session()->invalidate();
+
+        // CSRFトークンを再生成
+        $request->session()->regenerateToken();
+
+        // ログアウト後のリダイレクト
+        return redirect('/login');
     }
 }
