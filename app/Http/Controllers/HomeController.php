@@ -21,12 +21,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-      public function index(Request $request)
+    public function index()
     {
-        // セッションからユーザー名を取得
-        $username = $request->session()->get('username');
-
-        // ビューにユーザー名を渡す
-        return view('top', compact('username'));
+        return view('home');
     }
 }

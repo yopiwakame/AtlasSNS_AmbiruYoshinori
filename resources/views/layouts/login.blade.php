@@ -20,45 +20,66 @@
     <!--OGPタグ/twitterカード-->
 </head>
 <body>
-    <header>
+    <header class="inner">
         <div id = "head">
-        <h1><a><img src="images/logo.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>{{ $username }}<img src="images/arrow.png"></p>
-                <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
+            <div class="header_left">
+                <h1 class="atlas_log"><a href="/posts"><img src="images/atlas.png"></a></h1>
             </div>
+            <div class="header_right">
+                <p>{{ Auth::user()->username }}</p>
+                <p>さん</p>
+                <div class="arrow"></div>
+                <img src="images/icon1.png">
+            <div>
         </div>
     </header>
-    <div id="row">
-        <div id="container">
-            @yield('content')
-        </div >
-        <div id="side-bar">
-            <div id="confirm">
-                <p>{{ $username }}さんの</p>
-                <div>
-                <p>フォロー数</p>
-                <p>〇〇名</p>
-                </div>
-                <p class="btn"><a href="">フォローリスト</a></p>
+            <div id="row">
+                <div id="container">
+                    @yield('content')
+                </div >
+                <div id="side-bar">
+                    <nav class="arrow_items">
+                        <ul>
+                            <li><a href="/posts">HOME</a></li>
+                            <li><a href="/profile">プロフィール編集</a></li>
+                         <li><a a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a></li>
+                        </ul>
+                    </nav>
+                    <div id="confirm">
+                        <p>{{Auth::user()->username }}さんの</p>
+                        <div>
+                            <p>フォロー数</p>
+                            <p>{{ Auth::user()->following()->count() }}名</p>
+                        </div>
+                <p class="btn"><a href="follow-list">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                <p>{{ Auth::user()->followed()->count() }}名</p>
                 </div>
-                <p class="btn"><a href="">フォロワーリスト</a></p>
+                <p class="btn"><a href="follower-list">フォロワーリスト</a></p>
             </div>
-            <p class="btn"><a href="">ユーザー検索</a></p>
+            <p class="btn"><a href="search">ユーザー検索</a></p>
         </div>
     </div>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+    </form>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+
+    <script>
+            $(function(){
+                //クリックで動く
+                $('.arrow').click(function(){
+                    $(this).toggleClass('rotate');
+                    $('.arrow_items').slideToggle();
+                });
+            });
+    </script>
+
+
+
 </body>
 </html>

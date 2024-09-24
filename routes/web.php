@@ -11,56 +11,44 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home', 'HomeController@index');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/home', 'HomeController@index')->name('home');
+
+use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
 
-//ログアウト中のページ
-Route::post('/logout', 'Auth\LoginController@logout');
+//ログアウト中のページーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
-Route::get('/login', 'Auth\LoginController@login')->name('home');
+//ログイン
 Route::post('/login', 'Auth\LoginController@login');
 
 
+
+
 // ユーザー登録
-Route::get('/register', 'Auth\RegisterController@register')->name('register');
 Route::post('/register', 'Auth\RegisterController@register');
 
-
-// 登録完了後の画面
-Route::get('/added', 'Auth\RegisterController@added')->name('added');
+//登録完了画面
 Route::post('/added', 'Auth\RegisterController@added');
 
-//ログイン中のページ
-Route::get('/top','PostsController@index');
-
-Route::get('/profile','UsersController@profile');
-
-Route::get('/search','UsersController@index');
-
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+//ログイン中のページ ----------------------------------------------------------------------------------
 
 
 
+
+// ミドルウェアでアクセス制限
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', function () {
-        return view('home');
-    });
 
-    Route::get('/profile', function () {
-        return view('profile');
-    });
-    Route::get('/search', function () {
-        return view('search');
-    });
-    Route::get('/follow-list', function () {
-        return view('follow-list');
-    });
+    Route::get('/posts','PostsController@index');
+    Route::get('/profile','UsersController@profile');
+    Route::get('/search','UsersController@search');
+
+    Route::get('/follow-list','PostsController@index');
+    Route::get('/follower-list','PostsController@index');
 
 });
