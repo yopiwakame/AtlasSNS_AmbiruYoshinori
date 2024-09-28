@@ -66,9 +66,7 @@
     </form>
     <footer>
     </footer>
-
-    <script src="js/jquery-3.7.1.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script>
             $(function(){
                 //クリックで動く
