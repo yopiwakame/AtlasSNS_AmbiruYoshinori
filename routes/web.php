@@ -17,6 +17,8 @@
 // Route::get('/home', 'HomeController@index')->name('home');
 
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PostsController;
+
 
 Auth::routes();
 
@@ -47,6 +49,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/posts','PostsController@index');
     Route::get('/profile','UsersController@profile');
     Route::get('/search','UsersController@search');
+    Route::post('/posts', [PostController::class, 'store']);
+    Route::get('/posts', [PostsController::class, 'index']);
+    Route::post('/posts', [PostsController::class, 'store']);
+
 
     Route::get('/follow-list','PostsController@index');
     Route::get('/follower-list','PostsController@index');

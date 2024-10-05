@@ -19,7 +19,8 @@ header {
 }
 #side-bar {
     position: relative;
-    flex: 0 0 19%;
+    box-sizing: border-box;
+    flex: 0 0 20%;
     border-left: 1px solid #727272;
 }
 
