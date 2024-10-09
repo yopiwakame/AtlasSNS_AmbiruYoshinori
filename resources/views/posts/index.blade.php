@@ -10,6 +10,18 @@
  {!! Form::close() !!}
 
   <h1>投稿一覧</h1>
+
+  <!-- バリデーションのエラー  ------------>
+  @if ($errors->any())
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
    <ul>
      @foreach($posts as $post)
        <li>{{ $post->post }} ({{ $post->created_at }})</li>

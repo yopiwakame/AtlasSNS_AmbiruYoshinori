@@ -25,7 +25,11 @@ class PostsController extends Controller
     {
         // バリデーション
         $request->validate([
-            'post' => 'required|string|max:400',
+            'post' => [
+                 'required',//入力必須
+                 'min:1',   //1文字以上
+                 'max:150'  //150文字以内
+            ]
         ]);
 
         // データベースに投稿を保存
