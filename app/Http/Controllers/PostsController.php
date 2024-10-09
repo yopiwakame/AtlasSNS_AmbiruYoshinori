@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Posts;
+use App\Http\Controllers\PostsController;
 Auth::routes();
+
+use App\Post;
+
+use App\User;
 
 class PostsController extends Controller
 {

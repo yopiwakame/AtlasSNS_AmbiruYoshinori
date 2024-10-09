@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Posts extends Model {
 
-    use HasFactory;
+class Post extends Model {
+
+
 
     protected $fillable = ['user_id', 'post'];
 }
