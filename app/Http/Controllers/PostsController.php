@@ -13,7 +13,7 @@ use App\User;
 class PostsController extends Controller
 {
     //
-      public function index(Request $request) // $request を引数に追加
+      public function index(Request $request)
     {
           // 投稿一覧を取得
         $posts = Post::all(); // モデルPostを使用して全ての投稿を取得

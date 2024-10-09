@@ -1,6 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
+<!-- 投稿フォーム-------------------------------------- -->
  {!! Form::open(['url' => '/posts' ,'method' => 'post']) !!}
    <div class="form_group">
      <img src="images/icon1.png">
@@ -9,7 +10,15 @@
    </div>
  {!! Form::close() !!}
 
+<!-- 投稿一覧----------------------------------------- -->
   <h1>投稿一覧</h1>
+
+
+  <ul>
+    @foreach($posts as $post)
+    <li>{{ $post->post }} ({{ $post->created_at }})</li>
+    @endforeach
+  </ul>
 
   <!-- バリデーションのエラー  ------------>
   @if ($errors->any())
@@ -21,10 +30,4 @@
         </ul>
     </div>
 @endif
-
-   <ul>
-     @foreach($posts as $post)
-       <li>{{ $post->post }} ({{ $post->created_at }})</li>
-     @endforeach
-   </ul>
 @endsection
