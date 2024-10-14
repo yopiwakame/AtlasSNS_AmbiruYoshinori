@@ -12,10 +12,21 @@
 
 <!-- 投稿一覧----------------------------------------- -->
 
-ß
   <ul>
     @foreach($posts as $post)
-    <li>{{ $post->post }} ({{ $post->created_at }})</li>
+    <li>{{ $post->post }} ({{ $post->created_at }})
+        <div class="content">
+        <!-- 投稿の編集ボタン -->
+        <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"> <img src="images/edit.png" alt="更新" width="50" height="50"></a>
+        <!-- 消去ボタン -->
+        <div class="trash">
+          <a class="btn-trash" href="{{ route('posts.delete', $post->id) }}" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
+            <img src="images/trash.png" alt="更新" width="50" height="50">
+            <img src="images/trash-h.png" alt="更新" width="50" height="50">
+          </a>
+        </div>
+    </div>
+    </li>
     @endforeach
   </ul>
 
@@ -29,5 +40,23 @@
         </ul>
     </div>
 @endif
+
+ <!-- モーダルの中身 -->
+    <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+           <form action="{{ route('posts.authorCreate', '') }}" method="post">
+                <textarea name="post" class="modal_post"></textarea>
+                <input type="hidden" name="id" class="modal_id" value="">
+                <button type="submit">
+                  <img src="images/edit.png" alt="更新" width="50" height="50">
+                </button>
+
+                {{ csrf_field() }}
+           </form>
+           <a class="js-modal-close" href="">閉じる</a>
+        </div>
+    </div>
+
 
 @endsection

@@ -52,6 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/posts', [PostController::class, 'store']);
     Route::get('/posts', [PostsController::class, 'index']);
     Route::post('/posts', [PostsController::class, 'store']);
+    Route::get('/posts/delete/{id}', [PostsController::class, 'delete'])->name('posts.delete');
+    Route::post('/posts/authorCreate/{id}', [PostsController::class, 'authorCreate'])->name('posts.authorCreate');
 
 
     Route::get('/follow-list','PostsController@index');
