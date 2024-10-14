@@ -48,13 +48,16 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/posts','PostsController@index');
     Route::get('/profile','UsersController@profile');
+    //検索処理
     Route::get('/search','UsersController@search');
+    //投稿処理
     Route::post('/posts', [PostController::class, 'store']);
     Route::get('/posts', [PostsController::class, 'index']);
-    Route::post('/posts', [PostsController::class, 'store']);
+    //投稿消去
     Route::get('/posts/delete/{id}', [PostsController::class, 'delete'])->name('posts.delete');
+    //投稿編集
     Route::post('/posts/authorCreate/{id}', [PostsController::class, 'authorCreate'])->name('posts.authorCreate');
-
+    
 
     Route::get('/follow-list','PostsController@index');
     Route::get('/follower-list','PostsController@index');
