@@ -27,13 +27,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
+    //フォローしているユーザー
     public function following(){
           return $this->belongsToMany(
           'App\User','follows','following_id','followed_id');
 
     }
-
+    //フォローするユーザー
     public function followed(){
           return $this->belongsToMany(
           'App\User','follows','followed_id','following_id');
