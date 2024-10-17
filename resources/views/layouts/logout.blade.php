@@ -19,7 +19,7 @@
   <link rel="apple-touch-icon-precomposed" href="画像のURL" />
   <!--OGPタグ/twitterカード-->
 </head>
-<body>
+<body class="login_bg">
   <header>
     <h1><img src="images/atlas.png"></h1>
     <p>Social Network Service</p>
