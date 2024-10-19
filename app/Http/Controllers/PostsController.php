@@ -78,19 +78,6 @@ class PostsController extends Controller
     // save()メソッドを使って、データベース上の投稿を更新
 }
 
-    public function search(Request $request)
-    {
-        // 1つ目の処理
-        $keyword = $request->input('keyword');
-        // 2つ目の処理
-        if(!empty($keyword)){
-             $post = Post::where('post','like', '%'.$keyword.'%')->get();
-        }else{
-             $post = Post::all();
-        }
-        // 3つ目の処理
-        return redirect('/posts',['post'=>$post]);
-    }
 
 
 }

@@ -1,10 +1,87 @@
 @charset "UTF-8";
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
+    background-color: #0d6efd;
+    height: 100vh;
     height: 100%;
-    background: #186AC9;
+    background-image: linear-gradient(
+        180deg,
+        /* 上から下に向かってグラデーション */ #0d6efd -8%,
+        /* 濃い青色を最上部に */ #66c5f6 67%,
+        /* 淡い青色を途中に */ #e5e479 95% /* 下部に黄緑 */
+    );
+}
+
+header {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container_login {
+    text-align: center;
+    padding-top: 200px;
+    justify-content: center;
+}
+.container_login img {
+    width: 200px;
+}
+
+header p {
+    color: #ffff;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+#container {
+    justify-content: center;
+}
+
+.from_login {
+    margin-top: 40px;
+    width: 400px;
+    background: #45474959;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.from_login p {
+    color: #fff;
+    margin-top: 15px;
+    font-size: 1.7em;
+}
+.from_login p a {
+    margin-top: 15px;
+    display: inline-block;
+    font-size: 0.8em;
+    color: #fff;
+}
+
+.from_login label {
+    padding-top: 20px;
+    display: block;
+    text-align: left;
+    font-size: 1.1em;
+    color: #fff;
+}
+.from_login input {
+    height: 40px;
+    margin-top: 6px;
+    display: block;
+    height: 3em;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+}
+
+.from_login .btn {
+    width: 40%;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-top: 20px;
 }

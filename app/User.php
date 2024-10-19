@@ -26,8 +26,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
-    
+
+
     //ユーザーの投稿
     public function posts()
     {
@@ -44,6 +44,22 @@ class User extends Authenticatable
     public function followed(){
           return $this->belongsToMany(
           'App\User','follows','followed_id','following_id');
+    }
+
+
+
+    public function search(Request $request)
+    {
+        // 1つ目の処理
+        $keyword = $request->input('keyword');
+        // 2つ目の処理
+        if(!empty($keyword)){
+             $post = Post::where('post','like', '%'.$keyword.'%')->get();
+        }else{
+             $post = Post::all();
+        }
+        // 3つ目の処理
+        return redirect('/posts',['post'=>$post]);
     }
 
 
