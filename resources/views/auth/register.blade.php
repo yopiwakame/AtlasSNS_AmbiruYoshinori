@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- 適切なURLを入力してください -->
-{!! Form::open(['url' => '/register', 'method' => 'post']) !!}
+{!! Form::open(['url' => '/register', 'method' => 'post','class'=> 'from_login  from_register']) !!}
 
 <h2>新規ユーザー登録</h2>
   <!-- エラーメッセージの表示 -->
@@ -28,7 +28,7 @@
 {{ Form::label('パスワード確認') }}
 {{ Form::text('password_confirmation',null,['class' => 'input']) }}
 
-{{ Form::submit('登録') }}
+{{ Form::submit('新規登録',['class' => 'btn btn-danger']) }}
 
 <p><a href="/login">ログイン画面へ戻る</a></p>
 

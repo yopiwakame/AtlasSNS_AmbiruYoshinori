@@ -13,7 +13,7 @@
 
 {{ Form::submit('ログイン',['class' => 'btn btn-danger'] ) }}
 
-<p><a href="/register">新規ユーザーの方はこちら</a></p>
+<p class="from_login_added"><a href="/register">新規ユーザーの方はこちら</a></p>
 
 {!! Form::close() !!}
 

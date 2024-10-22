@@ -36,7 +36,7 @@ Route::post('/login', 'Auth\LoginController@login');
 Route::post('/register', 'Auth\RegisterController@register');
 
 //登録完了画面
-Route::post('/added', 'Auth\RegisterController@added');
+Route::get('/added', 'Auth\RegisterController@added')->name('added');
 
 //ログイン中のページ ----------------------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/posts/delete/{id}', [PostsController::class, 'delete'])->name('posts.delete');
     //投稿編集
     Route::post('/posts/authorCreate/{id}', [PostsController::class, 'authorCreate'])->name('posts.authorCreate');
-    
+
 
     Route::get('/follow-list','PostsController@index');
     Route::get('/follower-list','PostsController@index');

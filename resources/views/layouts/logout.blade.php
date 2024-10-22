@@ -21,17 +21,18 @@
   <!--OGPタグ/twitterカード-->
 </head>
 <body>
-  <div class="container_login" type="">
+  <div class="{{ Request::is('register') ? 'container_register' : 'container_login' }}" type="">
+
 
     <header>
-      <h1><img src="images/atlas.png"></h1>
+      <h1 class="logo_img"><img src="images/atlas.png"></h1>
       <p>Social Network Service</p>
     </header>
     <div id="container">
       @yield('content')
     </div>
   </div>
-    <script src="JavaScriptファイルのURL"></script>
+  <script src="JavaScriptファイルのURL"></script>
     <script src="JavaScriptファイルのURL"></script>
   </body>
 </html>
